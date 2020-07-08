@@ -1,5 +1,6 @@
 /* This is the data we will be using to create our articles */
 /* Look over this data, then proceed to line 91*/
+
 const data = [
   {
     title: 'Lambda School Students: "We\'re the best!"',
@@ -111,3 +112,54 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+function articleMaker(arr){
+const article = document.createElement('div')
+article.classList.add('article')
+  const title = document.createElement('h2')
+  title.textContent = arr.title 
+  article.appendChild(title)
+  const p = document.createElement('p')
+  p.classList.add('date')
+  article.appendChild(p)
+  const firstParagraph = document.createElement('p')
+  const secondParagraph = document.createElement('p')
+  const thirdParagraph = document.createElement('p')
+  firstParagraph.textContent = arr.firstParagraph
+  secondParagraph.textContent = arr.secondParagraph
+  thirdParagraph.textContent = arr.thirdParagraph
+  article.appendChild(firstParagraph)
+  article.appendChild(secondParagraph)
+  article.appendChild(thirdParagraph)
+  const span = document.createElement('span')
+  span.textContent = "+"
+  span.classList.add('expandButton')
+  article.appendChild(span)
+  span.addEventListener('click', ()=> {
+    article.classList.toggle('article-open')
+  })
+  
+
+
+  return article
+}
+const articles = document.querySelector('.articles')
+data.forEach((object) =>{
+  const newArticle = articleMaker(object)
+    articles.appendChild(newArticle)
+  
+})
+
+
+
+
+
+
+
+// //<div class="article">
+// <h2>{title of the article}</h2>
+// <p class="date">{date of the article}</p>
+
+// {three separate paragraph elements}
+
+// <span class='expandButton'>+</span>
+// </div>
